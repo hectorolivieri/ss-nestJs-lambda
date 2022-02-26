@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+    payment-api:
+        build:
+            dockerfile: ./docker/Dockerfile
+            context: .
+        container_name: payment-api
+        entrypoint: sh -c ./docker/init.sh
+        env_file:
+            - ./docker/.env
+        volumes:
+            - ./:/usr/src/
+        ports:
+            - "3000:3000"
+            - "9229:9229"
